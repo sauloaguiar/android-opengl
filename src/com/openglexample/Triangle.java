@@ -10,15 +10,14 @@ import android.os.SystemClock;
 
 public class Triangle {
 
-	private FloatBuffer vertexBuffer; // buffer holding vertices
+	private FloatBuffer vertexBuffer; 
 
 	private float vertices[] = { 
-			-0.25f, 0.0f, 0.0f, 
-			0.0f, 0.25f, 0.0f,
-			0.25f, 0.0f, 0.0f
-		};
+			-0.5f, 0f, 0f,
+			0.5f, 0f, 0f,
+			0.0f, 1.5f, 0f};
 
-	private boolean motion = true;
+	private boolean motion = false;
 
 	public Triangle() {
 		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(vertices.length
@@ -38,10 +37,6 @@ public class Triangle {
 			float angle = 0.090f * ((int) time);
 			gl.glRotatef(angle, 0.0f, 0.0f, 1.0f);
 		}
-		
-        long time = SystemClock.uptimeMillis() % 4000L;
-		float angle = 0.090f * ((int) time);
-		gl.glRotatef(angle, 0.0f, 0.0f, 1.0f);
 
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glColor4f(0.0f, 0.75f, 0.0f, 1.0f);
