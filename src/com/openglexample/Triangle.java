@@ -15,9 +15,9 @@ public class Triangle {
 	private float vertices[] = { 
 			-0.5f, 0f, 0f,
 			0.5f, 0f, 0f,
-			0.0f, 1.5f, 0f};
+			0.0f, 0.5f, 0f};
 
-	private boolean motion = false;
+	private boolean motion = true;
 
 	public Triangle() {
 		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(vertices.length
@@ -39,7 +39,7 @@ public class Triangle {
 		}
 
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-		gl.glColor4f(0.0f, 0.75f, 0.0f, 1.0f);
+		gl.glColor4f(0.2f, 0.75f, 0.2f, 0.5f);
 		gl.glFrontFace(GL10.GL_CW); // ?
 		gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer);
 		gl.glDrawArrays(GL10.GL_TRIANGLES, 0, 3);

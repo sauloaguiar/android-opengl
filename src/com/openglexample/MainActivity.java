@@ -50,12 +50,8 @@ public class MainActivity extends Activity implements Renderer{
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
-        gl.glColor4f(0.64313725490196f, 0.77647058823529f, 0.22352941176471f, 1);
-
-        gl.glPushMatrix();
     	triangle.draw(gl);
     	axis.draw(gl);
-    	gl.glPopMatrix();
     	
 	}
 
@@ -72,9 +68,12 @@ public class MainActivity extends Activity implements Renderer{
         
         width = glSurfaceView.getWidth();
         height = glSurfaceView.getHeight();
+        
+        GLU.gluPerspective(gl, 60.0f, width / height , -10.0f, 1000.0f);
          
-        gl.glViewport(0, 0, width, height);
+        
         gl.glMatrixMode(GL10.GL_MODELVIEW);
+        gl.glViewport(0, 0, width, height);
         
         triangle = new Triangle();
         axis = new Axis();

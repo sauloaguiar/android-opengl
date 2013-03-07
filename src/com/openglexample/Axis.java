@@ -10,15 +10,12 @@ public class Axis {
 	private FloatBuffer xBuffer, yBuffer, zBuffer; // buffer holding vertices
 
 	private float x[] = { 
-			0.0f, 0.0f, 0.0f,
 			1.0f, 0.0f, 0.0f};
 	
 	private float y[] = { 
-			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f};
 
 	private float z[] = { 
-			0.0f, 0.0f, 0.0f,
 			0.0f, 0.0f, 1.0f};
 
 	public Axis() {
@@ -41,13 +38,15 @@ public class Axis {
 		
 		zBuffer = zbyteBuffer.asFloatBuffer();
 		zBuffer.put(z);
+		zBuffer.position(2);
 	}
 	
 	public void draw(GL10 gl){
 		gl.glPushMatrix();
-		gl.glLineWidthx(10);
+		
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 	    gl.glLoadIdentity();
+	    gl.glLineWidth(1f);
 	    gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
 	    
 	    // X
@@ -56,7 +55,7 @@ public class Axis {
 	    gl.glDrawArrays(GL10.GL_LINE_LOOP, 0, 4);
 	    gl.glDrawElements(GL10.GL_LINES, 1, GL10.GL_UNSIGNED_BYTE, xBuffer);
 	    
-	    // Y
+	    /// Y
 	    gl.glVertexPointer(2, GL10.GL_FLOAT, 0, yBuffer);
 	    gl.glColor4f(0f, 1f, 0f, 0.5f);
 	    gl.glDrawArrays(GL10.GL_LINE_LOOP, 0, 4);
